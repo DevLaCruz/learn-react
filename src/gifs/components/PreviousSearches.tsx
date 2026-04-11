@@ -7,15 +7,18 @@ import type { FC } from "react";
 
 interface PreviousSearchesProps {
   queries: string[];
+  onLabelClicked?: (query:string)=>void;
 }
 
 const PreviousSearches: FC<PreviousSearchesProps> = ({ queries }) => {
-  return (
+ return (
     <div className="previous-searches">
       <h2>Prevs Searchs</h2>
       <ul className="previous-searches-list">
         {queries.map((query) => (
-          <li key={query}>{query}</li>
+          <li key={query}
+          onClick={() => console.log(query)}
+          >{query}</li>
         ))}
       </ul>
     </div>
