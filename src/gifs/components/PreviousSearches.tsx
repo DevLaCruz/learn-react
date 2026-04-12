@@ -1,24 +1,28 @@
 import type { FC } from "react";
 
-// interface Query {
-//   id: string;
-//   description: string;
-// }
-
 interface PreviousSearchesProps {
   queries: string[];
-  onLabelClicked?: (query:string)=>void;
+  onLabelClicked?: (query: string) => void;
 }
 
-const PreviousSearches: FC<PreviousSearchesProps> = ({ queries }) => {
+// 1. Extraemos onLabelClicked de los props 👇
+const PreviousSearches: FC<PreviousSearchesProps> = ({ queries, onLabelClicked }) => {
  return (
     <div className="previous-searches">
       <h2>Prevs Searchs</h2>
       <ul className="previous-searches-list">
         {queries.map((query) => (
-          <li key={query}
-          onClick={() => console.log(query)}
-          >{query}</li>
+          <li 
+            key={query}
+            // 2. Ejecutamos la función si existe 👇
+            onClick={() => {
+                if (onLabelClicked) {
+                    onLabelClicked(query);
+                }
+            }}
+          >
+            {query}
+          </li>
         ))}
       </ul>
     </div>

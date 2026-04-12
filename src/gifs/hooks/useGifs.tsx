@@ -1,18 +1,26 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import type { Gif } from '../interfaces/gif.interface';
 import { getGifsByQuery } from '../actions/get-gifs-by-query-actions';
 
+//const gifsCache: Record<string, Gif[]> = {}
 
 export const useGifs = () => {
-  
+
+  const [gifs, setGifs] = useState<Gif[]>([]);
   const [previousTerms, setPreviousTerms] = useState<string[]>([]);
 
-    const handleTermsClicked = (term: string) => {
-        console.log({term})
-    }
+const gifsCache = useRef<Record<string, Gif[]>>({});
 
-    const [gifs, setGifs] = useState<Gif[]>([]);
-    
+    const handleTermsClicked = async (term: string) => {
+        if(gifsCache.current[term]) {
+            setGifs(gifsCache.current[term]);
+            return;
+        }
+        //console.log({term})
+
+        const gifs = await getGifsByQuery(term);
+        setGifs(gifs);
+    }
 
     //se usa handle para referir que es manejador
     const handleSearch = async (query: string = '') => {
@@ -29,6 +37,12 @@ export const useGifs = () => {
         const gifsFromApi = await getGifsByQuery(query);
         setGifs(gifsFromApi); // 👈 AQUÍ está la clave
         
+        // gifsCache[query] = gifsFromApi; // Guardamos en caché el resultado para esta consulta
+        // console.log(gifsCache);
+
+        gifsCache.current[query] = gifsFromApi; // Guardamos en caché el resultado para esta consulta
+        
+    
     }
 
   
