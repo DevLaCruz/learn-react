@@ -1,0 +1,20 @@
+empezamos entendiendo que como tal react es un librería, las etiquiestas queno tienen nada dentro tipo "<>" se llaman fragmentos son finalmente una forma de agegar elementos si modificar la estructura del documento HTML, hay gente que usa react importando en HTML con la importacio, eso para proyectos pequeños pero no se suele ver ese tipo de proyectos
+
+principalmente si vemos los archivos en la raíz, la ayor parte son archivos de configuración que se modifican por logeeral solo 1 vez, en src es lo que tocamos en realidad, en vite.config.ts est
+
+SWC -> Seepdy web compiler
+
+
+lo que se hace en el main.tsx es renderizar, el StrictMode cuando lo quitamos es como que se "rompe"
+
+es útil usar los métodos de los arrays porque se puede concatenar registros por ejemplo
+
+el toString de un objeto literal es object Object, es mejor que las constantes esten declaradas fuera de la funciones de componentes react para que no las este ejecutando siempre, ahora, en react se opuede poner estilos dentro de las mismas etiquetas HTML con style={{}} y siempre con camelCase y con comillas simples el valor de las propiedades css
+
+Los eventos comienzan la mayoría con "on" y dentro del evento va el callback y las acciones ósea los callbacks como mejor practica se definen fuera del template
+
+cuando veamos código de que ponemos igualándolo a un hook como useState y vemos que como una desestructuración
+
+
+en las pruebas lo ideales que las pruebas cuando ya tenermos la aplicacion terminada se pueda crear un directorio de tests/
+

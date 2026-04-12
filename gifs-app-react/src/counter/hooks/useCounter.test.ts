@@ -3,11 +3,11 @@ import { useCounter } from "./useCounter";
 import { act, renderHook } from "@testing-library/react";
 
 describe('useCounter', ()=>{
-
+    
+    
     test('should initialize with default value of 10', ()=>{
-
         const { result }= renderHook(()=>useCounter())
-
+    
         expect(result.current.counter).toBe(5)
     })
 
@@ -34,7 +34,7 @@ describe('useCounter', ()=>{
     })
 
 
-    test('should increment counter when handleSubtrack is called', ()=>{
+    test('should decrement counter when handleSubtrack is called', ()=>{
 
         const {result} = renderHook(()=>useCounter())
 
@@ -48,17 +48,27 @@ describe('useCounter', ()=>{
     })
 
 
-    test('should increment counter when handleReset is called', ()=>{
+    test('should reset counter when handleReset is called', ()=>{
 
         const {result} = renderHook(()=>useCounter())
 
         //si tuviera async entonces adentro tambien hacemos
         act(()=>{
+        result.current.handleSubstract()
+        result.current.handleSubstract()
+        result.current.handleSubstract()
+        result.current.handleSubstract()
+
+        })
+
+        expect(result.current.counter).toBe(1)
+
+        act(()=>{
         result.current.handleReset()
+
         })
 
         expect(result.current.counter).toBe(5)
-
     })
 
 })
