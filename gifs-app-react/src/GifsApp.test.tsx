@@ -3,7 +3,8 @@ import { describe, expect, test } from 'vitest'
 import { GifsApp } from './GifsApp'
 
 describe('GifsApp', () => {
-  test('should render the GifsApp component', () => {
+  test('should render component properly', () => {
+    
     // Render the GifsApp component and perform assertions here
     const {container} = render(<GifsApp />)
 

@@ -1,9 +1,15 @@
-import { describe, expect, test } from "vitest";
+import { beforeEach,describe, expect, test } from "vitest";
 import { useCounter } from "./useCounter";
 import { act, renderHook } from "@testing-library/react";
 
 describe('useCounter', ()=>{
     
+    // beforeEach(()=>{
+    //     console.log('Before each');
+        
+    // })
+
+    // Para usar un Coustomhook una de las condiciones es estar dentro de functional component o dentro de otro hook
     
     test('should initialize with default value of 10', ()=>{
         const { result }= renderHook(()=>useCounter())

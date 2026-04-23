@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`GifsApp > should render the GifsApp component 1`] = `
+exports[`GifsApp > should render component properly 1`] = `
 <div>
   <div
     class="content-center"
