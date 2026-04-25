@@ -1,11 +1,18 @@
-import {describe, expect, test} from 'vitest'
+import {beforeEach, describe, expect, test} from 'vitest'
 import { getGifsByQuery } from './get-gifs-by-query-actions'
 import AxiosMockAdapter from 'axios-mock-adapter'
 import { giphyApi } from '../api/giphy.api'
+import {giphySearchResponseMock} from '../../../tests/mocks/giphy.response.data'
 
 describe('getGifsByQuery', () => {
     
-    const mock = new AxiosMockAdapter(giphyApi)
+    let mock = new AxiosMockAdapter(giphyApi)
+
+    beforeEach(()=>{
+        // mock.reset()
+
+        mock = new AxiosMockAdapter(giphyApi)
+    })
     
     // test('should return a list of gifs', async() => {
     //     const gifs = await getGifsByQuery('goku')
@@ -24,12 +31,47 @@ describe('getGifsByQuery', () => {
     // })
 
     test('should return a list of gifs', async ()=>{
-        mock.onGet('/search').reply(200, [1,2,7])
+        mock.onGet('/search').reply(200, giphySearchResponseMock)
 
         const gifs = await getGifsByQuery('goku')
 
-        console.log(gifs);
+        expect(gifs.length).toBe(10);
         
+        gifs.forEach((gif) => {
+            expect(typeof gif.id).toBe('string')
+            expect(typeof gif.title).toBe('string')
+            expect(typeof gif.url).toBe('string')
+            expect(typeof gif.width).toBe('number')
+            expect(typeof gif.height).toBe('number')
+
+        });
     })
 
+
+    test('should return a empty list of gifs if query is empty', async ()=>{
+        // mock.onGet('/search').reply(200, giphySearchResponseMock)
+
+        mock.restore()        
+
+        const gifs = await getGifsByQuery('')
+
+        console.log(gifs);
+        expect(gifs.length).toBe(0);
+    })
+
+
+    test('should handle error when the API rturns error', async ()=>{
+
+        mock.onGet('/search').reply(400,{
+            data:{
+                message: 'Bad request'
+            }
+        })
+
+        const gifs = await getGifsByQuery('goku')
+        
+        //console.log('helloo');
+        
+        expect(gifs.length).toBe(0)
+    })
 })
