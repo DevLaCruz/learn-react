@@ -1,7 +1,5 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+// import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, test, vi } from "vitest";
-import { MyCounterApp } from "./MyCounterApp";
-import { useCounter } from "../hooks/useCounter";
 import { giphyApi } from "./giphy.api";
 
 
@@ -9,6 +7,7 @@ describe('giphyApi', ()=>{
     test('should be configured correctly', ()=>{
         const params = giphyApi.defaults.params
         console.log(params);
+        
         //console.log(giphyApi.defaults);
 
         expect(giphyApi.defaults.baseURL).toBe('https://api.giphy.com/v1/gifs')
@@ -17,7 +16,8 @@ describe('giphyApi', ()=>{
     
 
         expect(params).toStrictEqual({
-            
+          lang:'es',
+          api_key: import.meta.env.VITE_GIPHY_API_KEY  
         })
 
     })
