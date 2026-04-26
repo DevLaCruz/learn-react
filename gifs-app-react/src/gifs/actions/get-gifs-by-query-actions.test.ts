@@ -1,77 +1,82 @@
-import {beforeEach, describe, expect, test} from 'vitest'
-import { getGifsByQuery } from './get-gifs-by-query-actions'
-import AxiosMockAdapter from 'axios-mock-adapter'
-import { giphyApi } from '../api/giphy.api'
-import {giphySearchResponseMock} from '../../../tests/mocks/giphy.response.data'
+import { beforeEach, describe, expect, test, vi } from "vitest";
+import { getGifsByQuery } from "./get-gifs-by-query-actions";
+import AxiosMockAdapter from "axios-mock-adapter";
+import { giphyApi } from "../api/giphy.api";
+import { giphySearchResponseMock } from "../../../tests/mocks/giphy.response.data";
 
-describe('getGifsByQuery', () => {
-    
-    let mock = new AxiosMockAdapter(giphyApi)
+describe("getGifsByQuery", () => {
+  let mock = new AxiosMockAdapter(giphyApi);
 
-    beforeEach(()=>{
-        // mock.reset()
+  beforeEach(() => {
+    // mock.reset()
 
-        mock = new AxiosMockAdapter(giphyApi)
-    })
-    
-    // test('should return a list of gifs', async() => {
-    //     const gifs = await getGifsByQuery('goku')
-    //     const [ gif1 ] = gifs
+    mock = new AxiosMockAdapter(giphyApi);
+  });
 
-    //     expect(gifs.length).toBe(10)
+  // test('should return a list of gifs', async() => {
+  //     const gifs = await getGifsByQuery('goku')
+  //     const [ gif1 ] = gifs
 
-    //     expect(gif1).toStrictEqual({
-    //         id: expect.any(String),
-    //         height: expect.any(Number),
-    //         width: expect.any(Number),
-    //         title: expect.any(String),
-    //         url: expect.any(String),
-    //     });
-        
-    // })
+  //     expect(gifs.length).toBe(10)
 
-    test('should return a list of gifs', async ()=>{
-        mock.onGet('/search').reply(200, giphySearchResponseMock)
+  //     expect(gif1).toStrictEqual({
+  //         id: expect.any(String),
+  //         height: expect.any(Number),
+  //         width: expect.any(Number),
+  //         title: expect.any(String),
+  //         url: expect.any(String),
+  //     });
 
-        const gifs = await getGifsByQuery('goku')
+  // })
 
-        expect(gifs.length).toBe(10);
-        
-        gifs.forEach((gif) => {
-            expect(typeof gif.id).toBe('string')
-            expect(typeof gif.title).toBe('string')
-            expect(typeof gif.url).toBe('string')
-            expect(typeof gif.width).toBe('number')
-            expect(typeof gif.height).toBe('number')
+  test("should return a list of gifs", async () => {
+    mock.onGet("/search").reply(200, giphySearchResponseMock);
 
-        });
-    })
+    const gifs = await getGifsByQuery("goku");
 
+    expect(gifs.length).toBe(10);
 
-    test('should return a empty list of gifs if query is empty', async ()=>{
-        // mock.onGet('/search').reply(200, giphySearchResponseMock)
+    gifs.forEach((gif) => {
+      expect(typeof gif.id).toBe("string");
+      expect(typeof gif.title).toBe("string");
+      expect(typeof gif.url).toBe("string");
+      expect(typeof gif.width).toBe("number");
+      expect(typeof gif.height).toBe("number");
+    });
+  });
 
-        mock.restore()        
+  test("should return a empty list of gifs if query is empty", async () => {
+    // mock.onGet('/search').reply(200, giphySearchResponseMock)
 
-        const gifs = await getGifsByQuery('')
+    mock.restore();
 
-        console.log(gifs);
-        expect(gifs.length).toBe(0);
-    })
+    const gifs = await getGifsByQuery("");
 
+    console.log(gifs);
+    expect(gifs.length).toBe(0);
+  });
 
-    test('should handle error when the API rturns error', async ()=>{
+  test("should handle error when the API rturns error", async () => {
 
-        mock.onGet('/search').reply(400,{
-            data:{
-                message: 'Bad request'
-            }
-        })
+    // Se le pone mockImplementation cuando queremos que algo pase luego de que ocurra el error
+    // En este caso solo retornamos una funcion vacia
+    const consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation( ()=>{} )
 
-        const gifs = await getGifsByQuery('goku')
-        
-        //console.log('helloo');
-        
-        expect(gifs.length).toBe(0)
-    })
-})
+    mock.onGet("/search").reply(400, {
+      data: {
+        message: "Bad request",
+      },
+    });
+
+    const gifs = await getGifsByQuery("goku");
+
+    //console.log('helloo');
+
+    expect(gifs.length).toBe(0);
+    expect(consoleErrorSpy).toHaveBeenCalled()
+    expect(consoleErrorSpy).toHaveBeenCalledTimes(1)
+
+    // Para que espere cualquier cosa
+    expect(consoleErrorSpy).toHaveBeenCalledWith(expect.anything())
+  });
+});

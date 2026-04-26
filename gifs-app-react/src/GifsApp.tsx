@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+//import React, {useState} from "react";
 //import { mockGifs } from "./mock-data/gifs.mock";
 import { CustomHeader } from "./shared/components/CustomHeader";
 import { SearchBar } from "./shared/components/SearchBar";
@@ -10,21 +10,20 @@ import GifList from "./gifs/components/GifList";
 import { useGifs } from "./gifs/hooks/useGifs";
 
 export const GifsApp = () => {
+  const { gifs, previousTerms, handleSearch, handleTermsClicked } = useGifs();
 
-  const {gifs, previousTerms, handleSearch, handleTermsClicked} = useGifs()
-    
-    return (
+  return (
     <>
       {/* Header */}
       <CustomHeader title="Searcher of gifs" />
 
       {/* Search */}
-      <SearchBar placeholder="Search gifs"
-      onQuery={handleSearch} />
+      <SearchBar placeholder="Search gifs" onQuery={handleSearch} />
 
       {/* prevs searches */}
-      <PreviousSearches queries={previousTerms}
-       onLabelClicked={handleTermsClicked}
+      <PreviousSearches
+        queries={previousTerms}
+        onLabelClicked={handleTermsClicked}
         //other way
         // queries={["noses", " ae"]}
 

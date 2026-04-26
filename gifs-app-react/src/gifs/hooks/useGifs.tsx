@@ -20,6 +20,8 @@ const gifsCache = useRef<Record<string, Gif[]>>({});
 
         const gifs = await getGifsByQuery(term);
         setGifs(gifs);
+        gifsCache.current[term] = gifs; // Guardamos en caché el resultado para esta consulta
+
     }
 
     //se usa handle para referir que es manejador
@@ -47,9 +49,12 @@ const gifsCache = useRef<Record<string, Gif[]>>({});
 
   
   return {
+    //params
     gifs,
+    previousTerms,
+
+    //methods
     handleSearch,
-    handleTermsClicked,
-    previousTerms
+    handleTermsClicked
   }
 }
