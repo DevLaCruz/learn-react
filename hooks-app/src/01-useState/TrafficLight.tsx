@@ -1,22 +1,34 @@
 import { useState } from "react";
 
-export const TrafficLight = () => {
-
     const colors = {
         red: 'bg-red-500 animate-pulse',
         yellow: 'bg-yellow-500 animate-pulse',
         green: 'bg-green-500 animate-pulse'
     }
 
+    //Para un objeto literal usamos una interfaz pero para un primitivo específico mejor como type
+    // type TrafficLightColor = 'red' | 'yellow' | 'green' -> esta es una primera alternativa pero si queremos agregar mas colores en colors y con el fin de hacerlo mas practico puede ser así:
+    type TrafficLightColor = keyof typeof colors
+
+export const TrafficLight = () => {
+
+
     // La idea es que cambiemos acorde al estado actual, para hacerlo osea que cambie fisicamente la pantalla como por ejemplo ahora
     // hacer que se seleccione el rojo, deebemos de definir una pieza de estado, para eso esta el useState
 
-    const [light, setLight] = useState('red') // tenemos light que es la "variable" que podemos usar y la estamos desestructurando,
+    // El useState es un generico y por eso vamos a usar el menor y mayor, sintaxis de generico
+    const [light, setLight] = useState<TrafficLightColor>('red') // tenemos light que es la "variable" que podemos usar y la estamos desestructurando,
     // tenemos setLigth que es la funcion disptacher que va cambiar la varialbe ligth y el estado inicial lo definimos en red por ejemplo, despues del igual se definel estado incial
 
 
-    const handleColorChange = (color: string) =>{
-        setLight(color)
+    const handleColorChange = (color: TrafficLightColor) =>{
+      //Vamos a establecer el nuevo color pero si queremos el anterior valor podemos ponerlo asi:  
+      setLight((prev) => {
+
+        //En el setLight nosotros tenemos acceso al valor actual  que tambien es conocido como previous value porque es el valor antes del nuevo cambio
+        console.log({prev});
+        return color //Lo que sea que esta funcion retorne sera el nuevo valor de light
+        })
     }
   return (
 
@@ -32,17 +44,18 @@ export const TrafficLight = () => {
         {/* Botón para cambiar el estado de la luz */}
         <div className="flex gap-2">
           <button
-          onClick={() => setLight('red')}
+          //Seria conveniente que lo que le pasemos este validado por el tipo de dato por eso usamos types mejor
+          onClick={() => handleColorChange('red')}
             className="bg-red-500 text-white px-4 py-2 rounded-md cursor-pointer">
             Rojo
           </button>
           <button
-          onClick={() => setLight('yellow')}
+          onClick={() => handleColorChange('yellow')}
             className="bg-yellow-500 text-white px-4 py-2 rounded-md cursor-pointer">
             Amarillo
           </button>
           <button
-          onClick={() => setLight('green')}
+          onClick={() => handleColorChange('green')}
             className="bg-green-500 text-white px-4 py-2 rounded-md cursor-pointer">
             Verde
           </button>
