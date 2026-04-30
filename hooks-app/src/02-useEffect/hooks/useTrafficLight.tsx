@@ -125,6 +125,14 @@ export const useTrafficLight = () => {
     colors,
     countDown,
 
+    // computed, son "calculos" o "logica"
+    percentage: (countDown / 5) * 100,
+
+    redLight: light === 'red' ? colors.red : 'bg-gray-500',
+    yellowLight: light === 'yellow' ? colors.yellow : 'bg-gray-500',
+    greenLight: light === 'green' ? colors.green : 'bg-gray-500',
+    
+
     //methods
     setLight,
     setCountDown

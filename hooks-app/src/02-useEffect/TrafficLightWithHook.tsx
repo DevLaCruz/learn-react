@@ -2,7 +2,7 @@ import { useTrafficLight } from "./hooks/useTrafficLight";
 
 
 export const TrafficLightWithHook = () => {
-     const {light, colors, countDown, setCountDown} = useTrafficLight()
+     const {light, colors, countDown, percentage, redLight, yellowLight, greenLight, setCountDown} = useTrafficLight()
     
   return (
 
@@ -15,13 +15,18 @@ export const TrafficLightWithHook = () => {
         <h2 className="text-white tesxt-xl">Countdown {countDown}</h2>
 
         <div className="w-64 bg-gray-700 rounded-full h-2">
-          <div className="bg-blue-500 h-2 rounded-full transition-all duration-1000 ease-linear" style = {{ width: `${(countDown / 5) * 100}%`}}>
+          <div className="bg-blue-500 h-2 rounded-full transition-all duration-1000 ease-linear" style = {{ width: `${percentage}`}}>
           </div>
         </div>
 
-        <div className={`w-32 h-32 ${light === 'red' ? colors[light] : 'bg-gray-500'} rounded-full`}></div>
-        <div className={`w-32 h-32 ${light === 'yellow' ? colors[light] : 'bg-gray-500'} rounded-full`}></div>
-        <div className={`w-32 h-32 ${light === 'green' ? colors[light] : 'bg-gray-500'} rounded-full`}></div>
+        {/* <div className={`w-32 h-32 ${light === 'red' ? colors[light] : 'bg-gray-500'} rounded-full`}></div> */}
+        <div className={`w-32 h-32 ${redLight}'} rounded-full`}></div>
+
+        {/* <div className={`w-32 h-32 ${light === 'yellow' ? colors[light] : 'bg-gray-500'} rounded-full`}></div> */}
+        <div className={`w-32 h-32 ${yellowLight} rounded-full`}></div>
+
+        {/* <div className={`w-32 h-32 ${light === 'green' ? colors[light] : 'bg-gray-500'} rounded-full`}></div> */}
+        <div className={`w-32 h-32 ${greenLight} rounded-full`}></div>
 
      
       </div>
