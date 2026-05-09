@@ -1,4 +1,4 @@
-import { useReducer, useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 
 import { Plus, Trash2, Check } from 'lucide-react';
 
@@ -20,13 +20,16 @@ export const TasksApp = () => {
 
   // cuando creamos unos reducer estamos dando una suposición que hay un estado inicial pero no se recomienda inicializar en este caso en el TaskReducer
   const [state, disptach] = useReducer( taskReducer, getTasksInitialSate() )
-
   // entonces ya tenermos las propiedades porque esto sera de tipo TaskState del todo dentro de este state:
   
+  useEffect(()=>{
+    // console.log({state});
+    localStorage.setItem('tasks-state', JSON.stringify(state))
+  }, [state])
 
   const addTodo = () => {
     //console.log('Agregar tarea', inputValue);
-    //if(inputValue.length ===0) return
+    if(inputValue.length ===0) return
 
     disptach({type: 'ADD_TODO', payload: inputValue})
 
@@ -70,7 +73,7 @@ export const TasksApp = () => {
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
     //console.log('Presiono enter');
-    console.log({key: e.key});
+    //console.log({key: e.key});
     
     if( e.key==='Enter'){
       addTodo()

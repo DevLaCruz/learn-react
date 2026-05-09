@@ -1,3 +1,5 @@
+import * as z from "zod";
+
 // La idea de este taskReducer es para poder poder manejar lo que está estrechamente relacionada a tareas en este caso o todos
 // el imput es mas general en este caso pero si fuera un formulario, tal vez si convenga aplicar
 interface Todo {
@@ -14,18 +16,54 @@ interface TaskState {
 }
 
 export const getTasksInitialSate = (): TaskState => {
-  return {
+
+  const localStorageState = localStorage.getItem('tasks-state')
+
+  if(!localStorageState){
+    return {
     todos: [],
     completed: 0,
     pending: 0,
     length: 0,
+    }
   }
+
+  // validate with zod
+  const result = TaskStateSchema.safeParse(JSON.parse(localStorageState))
+
+  if(result.error){
+    console.log(result.error);
+    return {
+    todos: [],
+    completed: 0,
+    pending: 0,
+    length: 0,
+    }
+  }
+
+  // tener en cuenta que el objeto puede ser manipulado
+  //return JSON.parse(localStorageState)
+  return result.data
 }
 
 export type TaskAction =
   | { type: "ADD_TODO"; payload: string }
   | { type: "TOGGLE_TODO"; payload: number }
   | { type: "DELETE_TODO"; payload: number };
+
+  const todoSchema = z.object({
+    id: z.number();
+  text: z.string();
+  completed: z.boolean();
+  })
+
+
+  const TaskStateSchema = z.object({
+    todos: z.array(todoSchema),
+    completed: z.number(),
+    pending: z.number(),
+    length: z.number(),
+  })
 
 // action es un "objeto" que nos va a permitir definir un nuevo estado, no vamos a modificar, solamente vamos a determinar un nuevo estado
 // quiere decir que no vamos a modificarlo y una vez vamos a determinar un nuevo estado este va a ser retornado y luego va a ser state: TaskState
