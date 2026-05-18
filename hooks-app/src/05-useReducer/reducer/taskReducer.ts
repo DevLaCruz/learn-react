@@ -52,9 +52,9 @@ export type TaskAction =
   | { type: "DELETE_TODO"; payload: number };
 
   const todoSchema = z.object({
-    id: z.number();
-  text: z.string();
-  completed: z.boolean();
+    id: z.number(),
+  text: z.string(),
+  completed: z.boolean()
   })
 
 
