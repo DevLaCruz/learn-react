@@ -1,5 +1,5 @@
-import { createContext, useState, type PropsWithChildren } from "react"
-import type { User } from "../data/user-mock.data"
+import { createContext, useContext, useEffect, useState, type PropsWithChildren } from "react"
+import { users, type User } from "../data/user-mock.data"
 
 // esta tambien es una manera de tipar el children:s
 // interface UserContextProps {
@@ -7,17 +7,17 @@ import type { User } from "../data/user-mock.data"
 // }
 
 
-type AuthStatus = 'checking' | 'suthenticated' | 'not-authenticated'
+type AuthStatus = 'checking' | 'authenticated' | 'not-authenticated'
 
 interface UserContextProps {
-    // state
-    authStatus: AuthStatus
-    user: User | null
+  // state
+  authStatus: AuthStatus;
+  user: User | null;
+  isAuthenticated: boolean;
 
-
-    // methods
-    login: (userId: number) => boolean
-    logout: () => void
+  // Methods
+  login: (userId: number) => boolean;
+  logout: () => void;
 }
 
 //Inicializando contexto
@@ -35,14 +35,39 @@ const [authStatus, setAuthStatus] = useState<AuthStatus>('checking')
 const [user, setUser] = useState<User|null>(null)
 
 const handleLogin = (userId: number) => {
-    console.log(userId);   
+    // console.log(userId);   
+    
+    const user = users.find(user => user.id === userId)
+
+    if(!user) {
+        console.log('User not found');
+        setUser(null)
+        setAuthStatus('not-authenticated')
+        return false
+    }
+
+    setUser(user)
+    setAuthStatus('authenticated')
     return true
 }
 
-const handleLogout = () => {
+ const handleLogout = () => {
     console.log('logout');
-    
-}
+    setAuthStatus('not-authenticated');
+    setUser(null);
+    localStorage.removeItem('userId');
+  };
+
+  useEffect(() => {
+    const storedUserId = localStorage.getItem('userId');
+    if (storedUserId) {
+      handleLogin(+storedUserId);
+      return;
+    }
+
+    handleLogout();
+  }, []);
+
 
 
 // La idea es que en algun Provider proveer información y comportamientos (funciones), entonces ara quelos componentes puedan compartir un 
@@ -61,11 +86,18 @@ const handleLogout = () => {
 // </div>
 // )
 
-return <UserContext value={{
-    authStatus: authStatus,
-    user:null,
-    login: handleLogin,
-    logout: handleLogout
-}}>{children}</UserContext>
+ return (
+    <UserContext
+      value={{
+        authStatus: authStatus,
+        isAuthenticated: authStatus === 'authenticated',
+        user: user,
 
-}
+        login: handleLogin,
+        logout: handleLogout,
+      }}
+    >
+      {children}
+    </UserContext>
+  );
+};

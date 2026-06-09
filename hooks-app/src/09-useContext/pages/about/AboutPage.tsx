@@ -1,18 +1,38 @@
-import React from 'react'
+import React, { use } from 'react'
 import { Link } from 'react-router'
+import { Button } from '../../../components/ui/button';
+import { UserContext } from '../../context/UserContext';
 
 export const AboutPage = () => {
-  return (
-    <div className='flex flex-col items-center justify-center min-h-screen'>
-      <h1 className='text-4x1 font-bold'> About page</h1>
+  const { isAuthenticated, logout } = use(UserContext);
 
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen">
+      <h1 className="text-4xl font-bold">Página sobre mi</h1>
       <hr />
 
       <div className="flex flex-col gap-2">
-        <Link to="/profile">Profile</Link>
-        <Link to="/login">Login</Link>
+        {/* Perfil de usuario si tiene sesión */}
+        {isAuthenticated && (
+          <Link
+            to="/profile"
+            className="hover:text-blue-500 underline text-2xl"
+          >
+            Perfil
+          </Link>
+        )}
 
-        </div>  
+        {/* Login logout */}
+        {isAuthenticated ? (
+          <Button variant="destructive" className="mt-4" onClick={logout}>
+            Salir
+          </Button>
+        ) : (
+          <Link to="/login" className="hover:text-blue-500 underline text-2xl">
+            Iniciar sesión
+          </Link>
+        )}
+      </div>
     </div>
-  )
-}
+  );
+};
