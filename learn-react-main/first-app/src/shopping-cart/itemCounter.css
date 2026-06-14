@@ -1,0 +1,12 @@
+.rowsec {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    color: aqua;
+}
+
+.item-text {
+    width: 150;
+    color: red;
+}

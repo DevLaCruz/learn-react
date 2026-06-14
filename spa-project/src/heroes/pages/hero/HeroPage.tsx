@@ -1,3 +1,9 @@
+import { HeroGrid } from "@/heroes/components/HeroGrid";
+
 export const HeroPage = () => {
-  return <div>HeroPage</div>;
+  return (
+    <div>
+      <HeroGrid />
+    </div>
+  );
 };

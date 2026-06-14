@@ -1,9 +1,9 @@
-import { Heart, Eye, Zap, Brain, Gauge, Shield } from 'lucide-react';
+import { Heart, Eye, Zap, Brain, Gauge, Shield } from "lucide-react";
 
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardContent } from '@/components/ui/card';
-import { Progress } from '@/components/ui/progress';
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
 
 export const HeroGridCard = () => {
   return (
@@ -12,7 +12,7 @@ export const HeroGridCard = () => {
         <img
           src="/placeholder.svg?height=300&width=300"
           alt="Superman"
-          className="object-cover transition-all duration-500 group-hover:scale-110"
+          className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
         />
 
         {/* Status indicator */}
@@ -78,28 +78,44 @@ export const HeroGridCard = () => {
               <Zap className="h-3 w-3 text-orange-500" />
               <span className="text-xs font-medium">Strength</span>
             </div>
-            <Progress value={50} className="h-2" activeColor="bg-orange-500" />
+            <Progress
+              value={50}
+              className="h-2"
+              indicatorClassName="bg-orange-500"
+            />
           </div>
           <div className="space-y-1">
             <div className="flex items-center gap-1">
               <Brain className="h-3 w-3 text-blue-500" />
               <span className="text-xs font-medium">Intelligence</span>
             </div>
-            <Progress value={80} className="h-2" activeColor="bg-blue-500" />
+            <Progress
+              value={80}
+              className="h-2"
+              indicatorClassName="bg-blue-500"
+            />
           </div>
           <div className="space-y-1">
             <div className="flex items-center gap-1">
               <Gauge className="h-3 w-3 text-green-500" />
               <span className="text-xs font-medium">Speed</span>
             </div>
-            <Progress value={90} className="h-2" activeColor="bg-green-500" />
+            <Progress
+              value={90}
+              className="h-2"
+              indicatorClassName="bg-green-500"
+            />
           </div>
           <div className="space-y-1">
             <div className="flex items-center gap-1">
               <Shield className="h-3 w-3 text-purple-500" />
               <span className="text-xs font-medium">Durability</span>
             </div>
-            <Progress value={100} className="h-2" activeColor="bg-purple-500" />
+            <Progress
+              value={100}
+              className="h-2"
+              indicatorClassName="bg-purple-500"
+            />
           </div>
         </div>
 

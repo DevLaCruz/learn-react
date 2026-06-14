@@ -1,0 +1,7 @@
+[install]
+# IMPORTANTE: En Bun se define en SEGUNDOS (pnpm usa minutos)
+# Ejemplo para 3 días (3 * 24 * 60 * 60 = 259200 segundos)
+minimumReleaseAge = 43200
+
+# También puedes excluir paquetes de confianza (igual que en pnpm)
+# minimumReleaseAgeExcludes = ["@types/node", "typescript"]

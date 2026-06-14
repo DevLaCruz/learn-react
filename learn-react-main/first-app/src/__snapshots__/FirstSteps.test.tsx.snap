@@ -1,0 +1,15 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FirstSteps > should match snapshot 1`] = `
+<div>
+  <h1>
+    Shopping Cart
+  </h1>
+  <div
+    data-testid="ItemCounter"
+  />
+  <div
+    data-testid="ItemCounter"
+  />
+</div>
+`;

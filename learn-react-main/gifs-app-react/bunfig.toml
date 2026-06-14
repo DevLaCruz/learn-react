@@ -1,0 +1,4 @@
+[install]
+# El tiempo se define en segundos. 
+# Por ejemplo, 604800 segundos equivalen a 7 días.
+minimumReleaseAge = 86400
