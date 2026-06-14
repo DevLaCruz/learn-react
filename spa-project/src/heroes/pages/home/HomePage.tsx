@@ -5,11 +5,26 @@ import { HeroGrid } from '@/heroes/components/HeroGrid';
 import { useState } from 'react';
 import { CustomPagination } from '@/components/custom/CustomPagination';
 import { CustomBreadcrumbs } from '@/components/custom/CustomBreadcrumbs';
+import { useQuery } from '@tanstack/react-query';
+import { getHeroresByPageAction } from '@/heroes/actions/get-herores-by-page.action';
 
 export const HomePage = () => {
   const [activeTab, setActiveTab] = useState<
     'all' | 'favorites' | 'heroes' | 'villains'
   >('all');
+
+
+//la idea de ussar tanstack query es ya no tener que usar necesariamente useEffet
+
+const {data: heroesResponse} = useQuery({
+  queryKey: ['heroes'],
+  queryFn: () => getHeroresByPageAction(),
+  staleTime: 1000 * 60 * 5
+})
+
+
+
+
 
   return (
     <>
@@ -51,7 +66,7 @@ export const HomePage = () => {
 
           <TabsContent value="all">
             {/* Mostrar todos los personajes */}
-            <HeroGrid />
+            <HeroGrid heroes = {heroesResponse?.heroes ?? []/>
           </TabsContent>
           <TabsContent value="favorites">
             {/* Mostrar todos los personajes favoritos */}
