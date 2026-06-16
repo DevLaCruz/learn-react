@@ -1,3 +1,4 @@
+import { use } from 'react';
 import { Heart, Eye, Zap, Brain, Gauge, Shield } from 'lucide-react';
 import { useNavigate } from 'react-router';
 
@@ -6,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import type { Hero } from '../types/hero.interface';
+import { FavoriteHeroContext } from '../context/FavoriteHeroContext';
 
 interface Props {
   hero: Hero;
@@ -13,6 +15,7 @@ interface Props {
 
 export const HeroGridCard = ({ hero }: Props) => {
   const navigate = useNavigate();
+  const { isFavorite, toggleFavorite } = use(FavoriteHeroContext);
 
   const handleClick = () => {
     navigate(`/heroes/${hero.slug}`);
@@ -59,8 +62,13 @@ export const HeroGridCard = ({ hero }: Props) => {
           size="sm"
           variant="ghost"
           className="absolute bottom-3 right-3 bg-white/90 hover:bg-white"
+          onClick={() => toggleFavorite(hero)}
         >
-          <Heart className="h-4 w-4 fill-red-500 text-red-500" />
+          <Heart
+            className={`h-4 w-4 ${
+              isFavorite(hero) ? 'fill-red-500 text-red-500' : 'text-gray-500'
+            }`}
+          />
         </Button>
 
         {/* View details button */}
@@ -101,7 +109,7 @@ export const HeroGridCard = ({ hero }: Props) => {
             <Progress
               value={hero.strength * 10}
               className="h-2"
-              indicatorClassName="bg-orange-500"
+              activeColor="bg-orange-500"
             />
           </div>
           <div className="space-y-1">
@@ -112,7 +120,7 @@ export const HeroGridCard = ({ hero }: Props) => {
             <Progress
               value={hero.intelligence * 10}
               className="h-2"
-              indicatorClassName="bg-blue-500"
+              activeColor="bg-blue-500"
             />
           </div>
           <div className="space-y-1">
@@ -123,7 +131,7 @@ export const HeroGridCard = ({ hero }: Props) => {
             <Progress
               value={hero.speed * 10}
               className="h-2"
-              indicatorClassName="bg-green-500"
+              activeColor="bg-green-500"
             />
           </div>
           <div className="space-y-1">
@@ -134,7 +142,7 @@ export const HeroGridCard = ({ hero }: Props) => {
             <Progress
               value={hero.durability * 10}
               className="h-2"
-              indicatorClassName="bg-purple-500"
+              activeColor="bg-purple-500"
             />
           </div>
         </div>
