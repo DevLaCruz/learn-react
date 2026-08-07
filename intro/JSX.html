@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <!-- Babel (https://babeljs.io/) not recommended to production -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        // 1
+        // const h1 = <h1>Hi World</h1>;
+        // ReactDOM.render(h1, document.getElementById('root'));
+        
+        // 2
+        // const usser = {
+        //     name: 'Alejandro',
+        //     surname: 'De La Cruz'
+        // };
+        // const h1 = <h1>Hi {user.name}</h1>;
+        // ReactDOM.render(h1, document.getElementById('root'));
+      
+        // 3
+        // function completeName(user) {
+        //     return user.name + ' ' + user.surname;
+        // }
+        // const user = {
+        //     name: 'Alejandro',
+        //     surname: 'De La Cruz'
+        // };
+        // const h1 = <h1>Hi {completeName(user)}</h1>;
+        // ReactDOM.render(h1, document.getElementById('root'));
+        
+        // 4
+        const clase = 'class-of-css';
+        const h1 = <h1 className={clase}>Hi World</h1>;
+        ReactDOM.render(h1, document.getElementById('root'));
+    </script>
+</body>
+</html>
+<!-- 
+    Conversor
+    https://babeljs.io/en/repl#?browsers=&build=&builtIns=false&corejs=3.6&spec=false&loose=false&code_lz=DwIwrgLhD2B2AEcDCAbAlgYwNYF4DeAFAJTw4B88EAFmgM4B0tAphAMoQCGETBe86WJgBMAXJQBOYJvAC-RGWQBQ8FfAAyaQYuAB6cFDhkgA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2&prettier=false&targets=&version=7.4.3&externalPlugins= 
+
+    Preprocesar JSX
+    npm init -y
+    npm install babel-cli@6 babel-preset-react-app@3
+    npx babel --watch src --out-dir dist --presets react-app/prod
+
+    Previene ataques XSS porque convierte todo en texto antes de render
+-->
