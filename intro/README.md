@@ -1,296 +1,358 @@
-# React Fundamentals - Guía Educativa Completa
+# React + Vite Projects Overview - LearnReactAndTanstack Workspace
 
-## Acerca de Este Repositorio
-
-Este directorio (`intro/`) contiene una guía **progresiva y completa** para aprender React desde cero, diseñada específicamente como material educativo para un curso de React + TypeScript + Vite. Incluye:
-
-- **Ejemplos comentados** en JavaScript y TypeScript
-- **Ejercicios prácticos** con sus soluciones
-- **Patrones modernos de React**
-- **Cobertura completa** desde fundamentos hasta temas avanzados
-
-## Estructura del Curso
-
-El repositorio está organizado en 5 módulos progresivos:
-
-| Módulo | Tema | Enfoque |
-|--------|------|---------|
-| **01-basics** | Fundamentos de React | Elements, JSX, Components, Props, Children |
-| **02-state-and-events** | Estado y Eventos | useState, useEffect, Event Handling, Forms |
-| **03-hooks** | Hooks Avanzados | Custom Hooks, useRef, useContext, useReducer |
-| **04-component-patterns** | Patrones de Componentes | Composition, HOC, Render Props, Compound Components |
-| **05-advanced** | Temas Avanzados | Context API, Performance, Testing, Type Patterns |
-
-## Estructura por Módulo
-
-Cada módulo sigue una estructura consistente:
-
-```
-XX-module-name/
-├── README.md           # Explicación teórica detallada del módulo
-├── examples/           # Ejemplos de código comentados
-│   ├── javascript/     # Versión JavaScript (archivos .jsx o .js)
-│   └── typescript/     # Versión TypeScript (archivos .tsx o .ts)
-├── exercises/          # Ejercicios para practicar (archivos .md)
-│   ├── exercise-1.md
-│   ├── exercise-2.md
-│   └── exercise-3.md (y así sucesivamente)
-└── solutions/          # Soluciones comentadas (archivos .jsx/.tsx/.js/.ts)
-    ├── exercise-1.jsx / .tsx
-    ├── exercise-2.jsx / .tsx
-    └── ...
-```
-
-### Ejemplo de Estructura Completa: 01-basics
-
-```
-01-basics/
-├── README.md           # Fundamentos teóricos + checklist + errores comunes
-├── examples/
-│   ├── javascript/
-│   │   ├── 01-react-elements.jsx
-│   │   ├── 02-jsx-syntax.jsx
-│   │   ├── 03-components.jsx
-│   │   ├── 04-props.jsx
-│   │   ├── 05-children.jsx
-│   │   └── 06-lists-keys.jsx
-│   └── typescript/
-│       ├── 01-react-elements.tsx
-│       ├── 02-jsx-syntax.tsx
-│       ├── 03-components.tsx
-│       ├── 04-props.tsx
-│       ├── 05-children.tsx
-│       └── 06-lists-keys.tsx
-├── exercises/
-│   ├── exercise-1.md   # ProfileCard
-│   ├── exercise-2.md   # Task List
-│   ├── exercise-3.md   # Button
-│   └── exercise-4.md   # Card Composable
-└── solutions/
-    ├── exercise-1.jsx / .tsx   # ProfileCard solución
-    ├── exercise-2.jsx / .tsx   # Task List solución
-    ├── exercise-3.tsx          # Button solución
-    └── exercise-4.tsx          # Card Composable solución
-```
-
-## Módulo por Módulo
-
-### 📚 01-basics: Fundamentos de React
-
-**Qué aprenderás:**
-- React Elements vs JSX
-- Function Components y Props
-- Children y composición
-- Listas con keys
-- Diferencias JS vs TS
-
-**Archivos clave:**
-- `examples/javascript/01-react-elements.jsx` - createElement vs JSX
-- `examples/typescript/01-react-elements.tsx` - Versión TypeScript
-- `exercise-1.md` - ProfileCard (crear componente)
-- `solutions/exercise-1.tsx` - Solution
-
-### 📚 02-state-and-events: Estado y Eventos
-
-**Qué aprenderás:**
-- useState (lazy init, functional updates, derived state)
-- useEffect (mount, cleanup, dependencies, AbortController)
-- Event handling (SyntheticEvents, delegation, preventDefault)
-- Formularios controlados vs uncontrolled
-- Custom hooks básicos
-
-**Archivos clave:**
-- `examples/javascript/01-useState-basics.jsx` a `07-forms-uncontrolled.jsx`
-- `examples/typescript/01-useState-basics.tsx` a `07-forms-uncontrolled.tsx`
-- `exercise-1.md` - State Machine
-- `exercise-2.md` - Custom Hooks (useFetch, useTimer, useLocalStorage)
-- `exercise-3.md` - Formularios Complejos
-- `exercise-4.md` - Performance Optimization
-- `solutions/exercise-1.tsx` - State Machine solución
-- `solutions/exercise-2.tsx` - Custom Hooks solución
-- etc.
-
-### 📚 03-hooks: Hooks Avanzados
-
-**Qué aprenderás:**
-- Custom Hooks patrón
-- useRef para valores mutables sin re-render
-- useContext y Context API
-- useReducer para lógica compleja
-- useMemo y useCallback para performance
-- Patrones: debounce, throttle, intersection observer
-
-### 📚 04-component-patterns: Patrones de Componentes
-
-**Qué aprenderás:**
-- Composition sobre herencia
-- Higher-Order Components (HOC)
-- Render Props pattern
-- Compound Components (select/option pattern)
-- Slot pattern y flexibles
-
-### 📚 05-advanced: Temas Avanzados
-
-**Qué aprenderás:**
-- Context API (Provider/Consumer patterns)
-- Performance optimization (memo, useMemo, useCallback)
-- Testing basics con React Testing Library
-- TypeScript patterns avanzados
-- Error boundaries y portales
-
-## Cómo Usar Esta Guía
-
-### Opción 1: Solo Lectura (Recomendado para empezar)
-1. Comienza por [`01-basics/README.md`](./01-basics/README.md)
-2. Lee el README de cada módulo para entender los conceptos
-3. Estudia los ejemplos (empieza por JavaScript, luego TypeScript)
-4. Intenta los ejercicios sin mirar las soluciones
-5. Compara tus soluciones con las proporcionadas
-
-### Opción 2: Ejecutar los Ejemplos
-
-**Requisitos previos:**
-- Node.js 18+
-- npm o bun
-
-```bash
-# Desde la raíz del proyecto intro/
-cd /mnt/Datos/NodejsProjects/LearnReactAndTanstack/intro
-
-# Opción A: Crear proyecto Vite (recomendado)
-npm create vite@latest react-playground -- --template react-ts
-cd react-playground
-npm install
-
-# Copiar ejemplos a src/ y probar
-npm run dev
-
-# O copiar ejercicios a src/components/
-# Opción B: CodeSandbox / StackBlitz
-# Simplemente abre cualquier archivo .jsx o .tsx en CodeSandbox
-```
-
-### Opción 3: Con tu IDE
-- Abre el directorio `intro/` en VS Code / WebStorm
-- Los ejemplos tienen comentarios explicativos línea por línea
-- Los ejercicios tienen especificaciones claras
-
-## Prerrequisitos
-
-### JavaScript ES6+
-- Arrow functions: `(x) => x + 1`
-- Destructuring: `const {a, b} = obj`
-- Modules: `import/export`
-- Spread operator: `...arr`
-- Template literals: `` `hola ${name}` ``
-
-### TypeScript Básico (para ejemplos .ts/.tsx)
-- Types e interfaces
-- Generics: `<T>`
-- Union types: `'a' | 'b'`
-- Readonly arrays: `readonly number[]`
-- Nullable types: `string | null`
-
-### HTML/CSS Básico
-- Box model
-- Flexbox
-- Selectores CSS
-
-## Convenciones de Código
-
-### Nomenclatura
-- **Componentes**: `UserProfile`, `handleClick` (PascalCase para componentes, camelCase para funciones)
-- **Archivos**: `useState-basics.jsx`, `ProfileCard.tsx` (kebab-case o camelCase)
-- **Ejercicios**: `exercise-1.md`, `StateMachine.tsx`
-
-### Estilo de Código
-- **Comentarios educativos**: Cada línea clave está explicada
-- **Componentes funcionales**: Siempre que sea posible
-- **Tipos TypeScript**: Definidos explícitamente en archivos .tsx
-- **Archivos .jsx vs .tsx**: `.jsx` cuando hay JSX puro, `.tsx` cuándo se usa TypeScript
-
-### Patrones Enfatizados
-- **Composition sobre herencia**
-- **Custom Hooks** para lógica reutilizable
-- **Funcional updates** en useState
-- **Cleanup** en useEffect
-- **Accessibility** (aria-label, aria-describedby, roles apropiados)
-
-## Guía de Progreso Recomendado
-
-| Semana | Módulo | Objetivos |
-|--------|--------|-----------|
-| **1** | 01-basics | Fundamentos completos + 4 ejercicios |
-| **2** | 02-state-and-events | Estado + eventos + 4 ejercicios |
-| **3** | 03-hooks | Custom hooks + 3 ejercicios |
-| **4** | 04-component-patterns | Patrones + 3 ejercicios |
-| **5** | 05-advanced | Temas avanzados + mini-proyecto final |
-
-**Al finalizar las 5 semanas:** Tendrás los conocimientos fundamentales para:
-- Crear aplicaciones React completas
-- Usar TypeScript de manera efectiva
-- Optimizar performance
-- Escribir código mantenible y testable
-- Entender los patrones modernos de React
-
-## Recursos Adicionales
-
-### Oficiales
-- [React Official Tutorial](https://react.dev/learn) - El tutorial oficial interactivo
-- [TypeScript Handbook](https://www.typescriptlang.org/docs/) - Handbook completo
-- [React TypeScript Cheatsheet](https://react-typescript-cheatsheet.netlify.app/) - Guía visual
-- [Vite Docs](https://vitejs.dev/guide/) - Build tooling
-
-### Herramientas
-- [React DevTools](https://react.dev/learn#introducing-react-devtools) - Inspeccionar estado y renders
-- [Vite](https://vitejs.dev/) - Dev server y build rápido
-- [ESLint + Prettier](https://prettier.io/) - Linting y formato
-- [Testing Library](https://testing-library.com/) - Testing de componentes
-
-### Patterns Avanzados
-- [Understanding useCallback and useMemo](https://overreacted.io/zh/understanding-react-usecallback-and-usememo/)
-- [Advanced React Patterns](https://www.tanstack.com/blog/react-patterns)
-- [Context API Best Practices](https://react.dev/learn/sharing-state-between-components)
-
-## Problemas Comunes y Soluciones
-
-### "Mi state no se actualiza"
-**Causa:** Mutación directa del state o async setState
-**Solución:** Usar functional updates: `setCount(c => c + 1)`
-
-### "El efecto se ejecuta infinitamente"
-**Causa:** Faltan dependencies en el array o cleanup missing
-**Solución:** Revisar deps y siempre retornar cleanup function
-
-### "No puedo acceder al DOM del hijo"
-**Causa:** forwardRef no usado
-**Solución:** `const Child = forwardRef((props, ref) => ...)`
-
-### "Los forms no validan"
-**Causa:** Control vs Uncontrolled confusion
-**Solución:** Decidir híbrido o elegir uno y mantenerlo consistente
-
-## Contribuir
-
-Si quieres agregar más contenido a este repositorio educativo:
-
-1. **Fork** el repositorio
-2. **Crea una nueva rama** (`git checkout -b feature/nuevo-modulo`)
-3. **Agrega tus ejercicios/soluciones** siguiendo la convención existente
-4. **Haz commit** (`git commit -m 'Add: nuevo módulo educativo'`)
-5. **Push** y crea un Pull Request
-
-## Licencia
-
-Este repositorio es para fines educativos. Puedes usar el contenido para:
-- Aprender React por tu cuenta
-- Enseñar a otros
-- Referencia personal
-
-No se permite el uso comercial sin autorización.
+Este documento describe **todos los proyectos React + Vite** (y el backend NestJS) que componen el workspace `/mnt/Datos/NodejsProjects/LearnReactAndTanstack/`. Cada proyecto tiene un propósito educativo o funcional específico.
 
 ---
 
-**¡Empieza por [01-basics/README.md](./01-basics/README.md)!**
+## 📁 Estructura General del Workspace
 
-*Esta guía fue creada como material educativo para aprender React + TypeScript + Vite de manera estructurada y progresiva.*
+```
+/mnt/Datos/NodejsProjects/LearnReactAndTanstack/
+├── first-app/           # Primeros pasos con React + TypeScript + Vite
+├── gifs-app-react/      # Aplicación de búsqueda de GIFs (Giphy API)
+├── hooks-app/           # Ejemplos exhaustivos de Hooks de React
+├── intro/               # 📚 ESTA CARPETA - Guía educativa completa (5 módulos)
+├── nest-heroes-backend/ # Backend NestJS (API REST para heroes)
+├── review/              # Proyecto de revisión/consolidación
+└── spa-project/         # Single Page Application completa (Heroes SPA)
+```
+
+---
+
+## 🔍 Detalle de Cada Proyecto
+
+### 1. `first-app` — Primeros Pasos Básicos
+**Propósito:** Proyecto base mínimo para aprender la configuración inicial de **React + TypeScript + Vite** desde cero.
+
+**Qué contiene:**
+- Configuración mínima: `vite.config.ts`, `tsconfig*.json`, `eslint.config.js`
+- Componentes básicos: `FirstSteps.tsx`, `MyAwesomeApp.tsx`
+- Tests unitarios con Vitest + React Testing Library (`*.test.tsx`)
+- Helpers de ejemplo: `math.helper.ts` + test
+- Mini proyecto: `shopping-cart/ItemCounter.tsx` con test y snapshot
+
+**Justificación educativa:**
+- **Punto de partida ideal**: Todo lo esencial para arrancar un proyecto React moderno
+- **Testing desde el inicio**: Incluye Vitest, React Testing Library, snapshots
+- **TypeScript nativo**: Configuración estricta desde el primer archivo
+- **Estructura limpia**: Separa componentes, helpers, assets, tests
+
+**Cuándo usarlo:** Primera vez que montas un proyecto React + Vite + TS. Base para copiar/pegar.
+
+---
+
+### 2. `gifs-app-react` — Consumo de API Externa (Giphy)
+**Propósito:** Aplicación completa que consume la **API de Giphy** para buscar y mostrar GIFs animados.
+
+**Qué contiene:**
+- Estructura por features: `gifs/`, `counter/`, `shared/`, `mock-data/`
+- Componente principal `GifsApp.tsx` + test
+- Uso de **custom hooks** para fetch de datos (`useGifs`, etc.)
+- Manejo de estados: loading, error, data
+- Mock data para testing y desarrollo offline
+- Tests con snapshots
+
+**Justificación educativa:**
+- **API real**: Aprende a integrar APIs REST externas (Giphy)
+- **Custom hooks**: Patrón `useGifs` para lógica de datos reutilizable
+- **Estados asíncronos**: loading/error/data en componentes reales
+- **Testing de hooks**: Cómo testear custom hooks con fetch
+- **Arquitectura por features**: Separación clara de responsabilidades
+
+**Cuándo usarlo:** Cuando necesites aprender consumo de APIs, custom hooks para data fetching, y testing de componentes con datos asíncronos.
+
+---
+
+### 3. `hooks-app` — Catálogo Exhaustivo de Hooks
+**Propósito:** **Referencia completa** de todos los hooks de React (built-in + avanzados + experimentales) con ejemplos funcionales.
+
+**Qué contiene (estructura por carpetas numeradas):**
+```
+src/
+├── 01-useState/          # useState básico y avanzado
+├── 02-useEffect/         # useEffect, cleanup, dependencias
+├── 03-examples/          # Ejemplos combinados
+├── 04-useRef/            # useRef para DOM y valores mutables
+├── 05-useReducer/        # useReducer para lógica compleja
+├── 06-memos/             # useMemo, useCallback, React.memo
+├── 07-useOptimistic/     # useOptimistic (React 19 experimental)
+├── 08-use-suspense/      # use + Suspense patterns
+├── 09-useContext/        # Context API + useContext
+├── api/                  # Helpers para API calls
+├── components/           # UI components reutilizables
+└── lib/                  # Utilities
+```
+
+**Justificación educativa:**
+- **Cobertura 100%**: Todos los hooks oficiales + experimentales
+- **Progresión lógica**: De básico (useState) a avanzado (useOptimistic)
+- **Ejemplos aislados**: Cada hook en su carpeta con demo funcional
+- **Patrones reales**: No solo "hola mundo", casos de uso reales
+- **TypeScript estricto**: Tipado correcto en cada hook
+
+**Cuándo usarlo:** Como **diccionario de consulta** cuando dudes sobre algún hook. Ideal para repasar antes de entrevistas técnicas.
+
+---
+
+### 4. `review` — Proyecto de Consolidación/Repaso
+**Propósito:** Aplicación que **integra todo lo aprendido** en un solo proyecto cohesivo: Context, Hooks personalizados, TypeScript avanzado, Components.
+
+**Qué contiene:**
+- `context/` - Context API para estado global
+- `hooks/` - Custom hooks reutilizables
+- `components/` - Componentes UI compuestos
+- `typescript/` - Tipos avanzados, generics, utility types
+- App principal integrando todo: `App.tsx`
+
+**Justificación educativa:**
+- **Integración real**: No ejemplos aislados, sino app cohesionada
+- **Arquitectura escalable**: Context + Hooks + Components pattern
+- **TypeScript avanzado**: Generics, conditional types, mapped types
+- **Repaso final**: Valida que dominas todos los conceptos previos
+
+**Cuándo usarlo:** Después de completar los módulos 01-03 de `intro/`, para ver cómo encajan las piezas en una app real.
+
+---
+
+### 5. `spa-project` — Single Page Application Completa (Heroes SPA)
+**Propósito:** **Proyecto final de grado** - SPA completa con routing, estado servidor, testing exhaustivo, arquitectura por features.
+
+**Qué contiene:**
+```
+src/
+├── heroes/
+│   ├── api/              # Axios instance + interceptors
+│   ├── actions/          # Server Actions (getHero, getHeroesByPage, getSummary)
+│   ├── components/       # UI components (HeroCard, HeroList, etc.)
+│   ├── context/          # Global state (Auth, Theme, etc.)
+│   ├── hooks/            # usePaginatedHero, useHeroSummary
+│   ├── layouts/          # Layouts (MainLayout, AuthLayout)
+│   ├── pages/            # Pages (Home, HeroDetail, Login, etc.)
+│   └── types/            # TypeScript interfaces
+├── router/               # React Router v7 config
+├── admin/                # Panel de administración
+└── main.test.tsx         # Test smoke
+```
+
+**Testing exhaustivo (7 archivos):**
+- `hero.api.test.ts` - Configuración Axios
+- `get-hero.action.test.ts` - Server actions + error handling
+- `get-heroes-by-page.action.test.ts` - Mocking Axios + params
+- `get-summary.action.test.ts` - Response shape validation
+- `usePaginatedHero.test.tsx` - React Query + renderHook
+- `useHeroSummary.test.tsx` - React Query + error states
+- `main.test.tsx` - Smoke test
+
+**Justificación educativa:**
+- **Arquitectura profesional**: Feature-based, separation of concerns
+- **Server Actions**: Patrón moderno para mutaciones de datos
+- **React Query (TanStack Query)**: Server state management
+- **Testing real**: Mocking, integration tests, hook testing
+- **Routing avanzado**: Layouts, protected routes, lazy loading
+- **Backend real**: Conecta con `nest-heroes-backend`
+
+**Cuándo usarlo:** Proyecto capstone. Demuestra dominio completo: routing, state management, testing, API integration, TypeScript.
+
+---
+
+### 6. `nest-heroes-backend` — Backend API (NestJS)
+**Propósito:** **API REST** que sirve datos a `spa-project` y `gifs-app-react`. No es React, pero es esencial para el ecosistema.
+
+**Qué contiene:**
+- NestJS framework (Node.js + TypeScript)
+- Entidades: Hero, User, etc.
+- Endpoints REST: CRUD completo para heroes
+- Autenticación JWT (login, register, guards)
+- Base de datos (TypeORM/Prisma)
+- Tests unitarios + e2e
+- Swagger/OpenAPI documentation
+
+**Justificación educativa:**
+- **Full-stack real**: Frontend + Backend comunicándose
+- **NestJS patterns**: Modules, Controllers, Services, Guards, Pipes
+- **TypeScript end-to-end**: Tipos compartidos entre frontend/backend
+- **Auth JWT**: Login, registro, protected routes
+- **Documentación automática**: Swagger UI
+
+**Cuándo usarlo:** Cuando necesites backend real para tus apps React. Corre en `npm run start:dev` (puerto 3001).
+
+---
+
+### 7. `intro/` — Guía Educativa Estructurada (ESTA CARPETA)
+**Propósito:** **Curso progresivo de 5 módulos** desde cero hasta avanzado, con teoría, ejemplos JS/TS, ejercicios y soluciones.
+
+**Estructura completa:**
+```
+intro/
+├── README.md                    # Este archivo
+├── 01-basics/                   # Fundamentos: Elements, JSX, Props, Children
+│   ├── README.md
+│   ├── examples/javascript/     # 6 archivos .jsx comentados
+│   ├── examples/typescript/     # 6 archivos .tsx comentados
+│   ├── exercises/               # 4 ejercicios (.md)
+│   └── solutions/               # 4 soluciones (.jsx + .tsx)
+├── 02-state-and-events/         # useState, useEffect, Events, Forms
+│   ├── examples/javascript/     # 7 archivos .jsx
+│   ├── examples/typescript/     # 7 archivos .tsx
+│   ├── exercises/               # 4 ejercicios
+│   └── solutions/
+├── 03-hooks/                    # Custom hooks, useRef, useContext, useReducer
+├── 04-component-patterns/       # Composition, HOC, Render Props, Compound
+└── 05-advanced/                 # Context API, Performance, Testing, TS patterns
+```
+
+**Justificación educativa:**
+- **Progresión garantizada**: Cada módulo construye sobre el anterior
+- **Dual JS/TS**: Aprende conceptos en JS, luego refuerza con TS
+- **Práctica obligatoria**: Ejercicios con soluciones comentadas
+- **Referencia rápida**: README teórico + checklist + errores comunes
+- **Auto-contenido**: No requiere proyectos externos para aprender
+
+**Cuándo usarlo:** **Desde el día 1**. Sigue el orden 01→05. Dedica 1-2 semanas por módulo.
+
+---
+
+## 🔗 Relaciones Entre Proyectos
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    WORKSPACE ROOT                           │
+├─────────────────────────────────────────────────────────────┤
+│  nest-heroes-backend  ◄─── API REST (puerto 3001)          │
+│        ▲                                                  │
+│        │ HTTP/JSON                                        │
+│        │                                                  │
+│  ┌────┴────┬──────────────┬────────────────────────────┐  │
+│  │         │              │                            │  │
+│  ▼         ▼              ▼                            ▼  │
+│ spa-    gifs-app-     hooks-app                    review  │
+│ project  react          (referencia)                 (repaso)│
+│ (capstone) (API real)   (hooks catalog)              (integra)│
+│                                                              │
+│  ▲                                                          │
+│  │                                                          │
+│  └────────────────── intro/ (guía paso a paso)             │
+└─────────────────────────────────────────────────────────────┘
+```
+
+- **`nest-heroes-backend`** es la **fuente de datos** para `spa-project`
+- **`spa-project`** consume la API y demuestra arquitectura profesional
+- **`gifs-app-react`** consume API externa (Giphy) - patrón similar
+- **`hooks-app`** es **referencia técnica** para todos los demás
+- **`review`** integra patrones de `hooks-app` + `spa-project`
+- **`first-app`** es la **base mínima** de la que derivan los demás
+- **`intro/`** enseña **todos los conceptos** que se usan en los proyectos arriba
+
+---
+
+## 🚀 Cómo Ejecutar Todo el Ecosistema
+
+### 1. Backend (primero, en terminal aparte)
+```bash
+cd /mnt/Datos/NodejsProjects/LearnReactAndTanstack/nest-heroes-backend
+npm run start:dev
+# Corre en http://localhost:3001
+# Swagger en http://localhost:3001/api
+```
+
+### 2. Frontend Principal (spa-project)
+```bash
+cd /mnt/Datos/NodejsProjects/LearnReactAndTanstack/spa-project
+npm run dev
+# Corre en http://localhost:5173 (o similar)
+```
+
+### 3. Otros Frontends (opcional, en otras terminales)
+```bash
+# Gifs App
+cd /mnt/Datos/NodejsProjects/LearnReactAndTanstack/gifs-app-react
+npm run dev
+
+# Hooks App (catálogo de hooks)
+cd /mnt/Datos/NodejsProjects/LearnReactAndTanstack/hooks-app
+npm run dev
+
+# Review (consolidación)
+cd /mnt/Datos/NodejsProjects/LearnReactAndTanstack/review
+npm run dev
+
+# First App (básico)
+cd /mnt/Datos/NodejsProjects/LearnReactAndTanstack/first-app
+npm run dev
+```
+
+### 4. Testing
+```bash
+# En cualquier proyecto React:
+npm run test        # Vitest watch mode
+npm run test:ui     # Interfaz visual
+npm run coverage    # Cobertura de código
+```
+
+---
+
+## 📚 Ruta de Aprendizaje Recomendada
+
+| Semana | Enfoque | Proyecto de Práctica | Lectura en `intro/` |
+|--------|---------|---------------------|---------------------|
+| **1** | Setup + Fundamentos | `first-app` | `01-basics/` |
+| **2** | Estado + Eventos + Forms | `first-app` (shopping-cart) | `02-state-and-events/` |
+| **3** | Hooks + Custom Hooks | `hooks-app` (explorar) | `03-hooks/` |
+| **4** | API Externa + Data Fetching | `gifs-app-react` | Repaso 01-03 |
+| **5** | Patrones de Componentes | `review` + `hooks-app` | `04-component-patterns/` |
+| **6** | Arquitectura + Testing + Full-stack | `spa-project` + `nest-heroes-backend` | `05-advanced/` |
+
+**Total: 6 semanas** para dominio completo.
+
+---
+
+## 🎯 Qué Proyecto Usar Según Tu Objetivo
+
+| Objetivo | Proyecto Recomendado |
+|----------|---------------------|
+| "Nunca he usado React + Vite + TS" | `first-app` → `intro/01-basics` |
+| "Quiero ver TODOS los hooks con ejemplos" | `hooks-app` + `intro/03-hooks` |
+| "Necesito consumir una API REST real" | `gifs-app-react` + `intro/02-state-and-events` |
+| "Quiero ver testing real (Vitest + RTL)" | `spa-project` (tests) + `intro/05-advanced` |
+| "Quiero arquitectura profesional completa" | `spa-project` (código + tests) |
+| "Necesito backend para mi frontend" | `nest-heroes-backend` |
+| "Quiero repasar todo antes de entrevista" | `review` + `hooks-app` + `intro/` (todos) |
+| "Curso estructurado desde cero" | **`intro/` completo** (01→05) |
+
+---
+
+## 🛠 Stack Tecnológico Común
+
+Todos los proyectos React comparten:
+- **React 19** + **TypeScript 6** + **Vite 8**
+- **ESLint 10** + **React Compiler** (experimental)
+- **Vitest** + **React Testing Library** + **jsdom**
+- **TailwindCSS 4** (en la mayoría)
+- **React Router 7** (en spa-project, review)
+- **TanStack Query 5** (en spa-project)
+- **Axios** + **Axios Mock Adapter** (testing)
+
+---
+
+## 📝 Notas de Mantenimiento
+
+- **Node.js**: Usar v18+ (`.nvmrc` recomendado)
+- **Package Manager**: `pnpm` (hay `pnpm-lock.yaml` y `pnpm-workspace.yaml` en varios)
+- **Lockfiles**: `bun.lock` en algunos, `package-lock.json` en nest, `pnpm-lock.yaml` en otros
+- **Scripts comunes**: `dev`, `build`, `lint`, `test`, `preview`, `coverage`
+
+---
+
+## 📄 Licencia y Uso
+
+Este workspace es **material educativo personal**. Puedes:
+- ✅ Estudiar, modificar, experimentar
+- ✅ Usar como base para tus proyectos
+- ✅ Copiar patrones y configuraciones
+- ❌ Uso comercial sin autorización
+
+---
+
+**¿Por dónde empezar?** → Lee `intro/01-basics/README.md` y abre `first-app` en tu editor.
+
+*Última actualización: Agosto 2026*
