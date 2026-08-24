@@ -45,9 +45,13 @@ export const HeroStats = () => {
         title="Favoritos"
         icon={<Heart className="h-4 w-4 text-muted-foreground" />}
       >
-        {/* TODO: tenemos que calcular este valor */}
-        <div className="text-2xl font-bold text-red-600">{favoriteCount}</div>
-        <p className="text-xs text-muted-foreground">
+        {/* Agregamos el data-testid aquí 👇 */}
+        <div data-testid="favorite-count" className="text-2xl font-bold text-red-600">
+          {favoriteCount}
+        </div>
+        
+        {/* Y agregamos el data-testid aquí 👇 */}
+        <p data-testid="favorite-percentage" className="text-xs text-muted-foreground">
           {((favoriteCount / summary.totalHeroes) * 100).toFixed(2)}% of total
         </p>
       </HeroStatCard>
